@@ -27,6 +27,7 @@ import java.util.Map;
  */
 public class JwtUtil {
 	/** 设置过期时间: 30分钟 */
+//	private static final long EXPIRE_TIME = 30 * 1000;
 	private static final long EXPIRE_TIME = 30 * 60 * 1000;
 	/** 服务端的私钥secret,在任何场景都不应该流露出去 */
 	private static final String TOKEN_SECRET = "zhengchao";
@@ -81,9 +82,9 @@ public class JwtUtil {
 	 * @param token
 	 * @return
 	 */
-	public static int parseTokenUid(String token) {
+	public static Long parseTokenUid(String token) {
 		DecodedJWT jwt = JWT.decode(token);
-		return jwt.getClaim("uid").asInt();
+		return jwt.getClaim("uid").asLong();
 	}
 
 	/**

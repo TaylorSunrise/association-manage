@@ -1,0 +1,177 @@
+2021-02-22 09:02:30.865 WARN  --- [HikariPool.java:787][HikariPool-1 housekeeper] - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8h42m29s764ms436µs100ns).
+2021-02-22 09:10:28.382 INFO  --- [UserServiceImpl.java:68][http-nio-8083-exec-5] - ======token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJyb290IiwidWlkIjoxMzYyNzA5NDUzNjA1OTY1ODI2LCJleHAiOjE2MTM4MjAyODl9.PzYy69vezHcEmorkutR6AeXD77CFawzKR_AE9LZW-8M
+2021-02-22 09:10:30.067 ERROR --- [DirectJDKLog.java:175][http-nio-8083-exec-5] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: com.baomidou.mybatisplus.core.exceptions.MybatisPlusException:  The SQL execution time is too large, please optimize ! 
+### The error may exist in com/taylor/associationmanage/mapper/UserMapper.java (best guess)
+### The error may involve com.taylor.associationmanage.mapper.UserMapper.selectById
+### The error occurred while handling results
+### SQL: SELECT user_id,username,password,salt,roleId,name,sex,phone,email,create_time,update_time,version FROM user WHERE user_id=?
+### Cause: com.baomidou.mybatisplus.core.exceptions.MybatisPlusException:  The SQL execution time is too large, please optimize ! ] with root cause
+com.baomidou.mybatisplus.core.exceptions.MybatisPlusException:  The SQL execution time is too large, please optimize ! 
+	at com.baomidou.mybatisplus.core.toolkit.ExceptionUtils.mpe(ExceptionUtils.java:51)
+	at com.baomidou.mybatisplus.core.toolkit.Assert.isTrue(Assert.java:41)
+	at com.baomidou.mybatisplus.core.toolkit.Assert.isFalse(Assert.java:53)
+	at com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor.intercept(PerformanceInterceptor.java:194)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:61)
+	at com.sun.proxy.$Proxy115.query(Unknown Source)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:326)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:83)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:63)
+	at com.sun.proxy.$Proxy114.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:148)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:141)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433)
+	at com.sun.proxy.$Proxy59.selectOne(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:166)
+	at com.baomidou.mybatisplus.core.override.PageMapperMethod.execute(PageMapperMethod.java:101)
+	at com.baomidou.mybatisplus.core.override.PageMapperProxy.invoke(PageMapperProxy.java:64)
+	at com.sun.proxy.$Proxy63.selectById(Unknown Source)
+	at com.taylor.associationmanage.service.impl.UserServiceImpl.userInfo(UserServiceImpl.java:70)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:208)
+	at com.sun.proxy.$Proxy78.userInfo(Unknown Source)
+	at com.taylor.associationmanage.controller.UserController.getInfo(UserController.java:43)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:197)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:141)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:894)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1060)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:962)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)
+	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)
+	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:365)
+	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)
+	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)
+	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:888)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1597)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2021-02-22 09:15:33.252 INFO  --- [StartupInfoLogger.java:55][main] - Starting AssociationManageApplication using Java 1.8.0_161 on YUMC80K8J8KKQ8K with PID 1244 (G:\IDEA\workspace\graduationProject\association-manage\target\classes started by Taylor in G:\IDEA\workspace\graduationProject\association-manage)
+2021-02-22 09:15:33.257 INFO  --- [SpringApplication.java:664][main] - The following profiles are active: dev
+2021-02-22 09:15:35.137 INFO  --- [HikariDataSource.java:110][main] - HikariPool-1 - Starting...
+2021-02-22 09:15:35.311 INFO  --- [HikariDataSource.java:123][main] - HikariPool-1 - Start completed.
+2021-02-22 09:15:37.937 INFO  --- [StartupInfoLogger.java:61][main] - Started AssociationManageApplication in 5.58 seconds (JVM running for 7.81)
+2021-02-22 09:15:57.317 INFO  --- [UserServiceImpl.java:68][http-nio-8083-exec-1] - ======token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJyb290IiwidWlkIjoxMzYyNzA5NDUzNjA1OTY1ODI2LCJleHAiOjE2MTM4MjAyODl9.PzYy69vezHcEmorkutR6AeXD77CFawzKR_AE9LZW-8M
+2021-02-22 09:15:57.511 INFO  --- [UserServiceImpl.java:96][http-nio-8083-exec-1] - RoleId为：1
+2021-02-22 09:15:57.533 INFO  --- [UserServiceImpl.java:104][http-nio-8083-exec-1] - userInfoVO:UserInfoVO(userId=1362709453605965826, username=root, name=root, sex=男, phone=18894536254, email=root@qq.com, createTime=Fri Feb 19 18:23:46 CST 2021, updateTime=Fri Feb 19 18:23:46 CST 2021, roles=[root])
+2021-02-22 09:22:08.684 INFO  --- [StartupInfoLogger.java:55][main] - Starting AssociationManageApplication using Java 1.8.0_161 on YUMC80K8J8KKQ8K with PID 3004 (G:\IDEA\workspace\graduationProject\association-manage\target\classes started by Taylor in G:\IDEA\workspace\graduationProject\association-manage)
+2021-02-22 09:22:08.691 INFO  --- [SpringApplication.java:664][main] - The following profiles are active: dev
+2021-02-22 09:22:10.314 INFO  --- [HikariDataSource.java:110][main] - HikariPool-1 - Starting...
+2021-02-22 09:22:10.479 INFO  --- [HikariDataSource.java:123][main] - HikariPool-1 - Start completed.
+2021-02-22 09:22:13.014 INFO  --- [StartupInfoLogger.java:61][main] - Started AssociationManageApplication in 5.507 seconds (JVM running for 7.897)
+2021-02-22 09:24:34.861 INFO  --- [StartupInfoLogger.java:55][main] - Starting AssociationManageApplication using Java 1.8.0_161 on YUMC80K8J8KKQ8K with PID 22256 (G:\IDEA\workspace\graduationProject\association-manage\target\classes started by Taylor in G:\IDEA\workspace\graduationProject\association-manage)
+2021-02-22 09:24:34.864 INFO  --- [SpringApplication.java:664][main] - The following profiles are active: dev
+2021-02-22 09:24:36.621 INFO  --- [HikariDataSource.java:110][main] - HikariPool-1 - Starting...
+2021-02-22 09:24:36.819 INFO  --- [HikariDataSource.java:123][main] - HikariPool-1 - Start completed.
+2021-02-22 09:24:39.287 INFO  --- [StartupInfoLogger.java:61][main] - Started AssociationManageApplication in 5.032 seconds (JVM running for 6.928)
+2021-02-22 09:25:09.240 INFO  --- [JwtFilter.java:40][http-nio-8083-exec-4] - 提交给realm进行登入，如果错误他会抛出异常并被捕获
+2021-02-22 09:25:09.241 INFO  --- [MyRealm.java:63][http-nio-8083-exec-4] - ————————身份认证——————————
+2021-02-22 09:25:09.275 INFO  --- [MyRealm.java:70][http-nio-8083-exec-4] - username:admin
+2021-02-22 09:25:09.300 INFO  --- [MyRealm.java:152][http-nio-8083-exec-4] - 重新设置超时时间:30
+2021-02-22 09:25:09.310 INFO  --- [UserServiceImpl.java:68][http-nio-8083-exec-4] - ======token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhZG1pbiIsInVpZCI6MTM2MjcwODMxNjM1NDA0MzkwNSwiZXhwIjoxNjEzOTU3MTI1fQ.3v6R-YeM6UPDXbGs6yw7orAB1SSl7zXHQwvrQl3GV6E
+2021-02-22 09:25:09.336 INFO  --- [UserServiceImpl.java:95][http-nio-8083-exec-4] - RoleId为：2
+2021-02-22 09:25:09.350 INFO  --- [UserServiceImpl.java:103][http-nio-8083-exec-4] - userInfoVO:UserInfoVO(userId=1362708316354043905, username=admin, name=Admin, sex=男, phone=18894566254, email=admin@qq.com, createTime=Fri Feb 19 18:19:15 CST 2021, updateTime=Fri Feb 19 18:19:15 CST 2021, roles=[admin])
+2021-02-22 09:27:01.655 INFO  --- [JwtFilter.java:40][http-nio-8083-exec-6] - 提交给realm进行登入，如果错误他会抛出异常并被捕获
+2021-02-22 09:27:01.655 INFO  --- [MyRealm.java:63][http-nio-8083-exec-6] - ————————身份认证——————————
+2021-02-22 09:27:01.657 INFO  --- [MyRealm.java:70][http-nio-8083-exec-6] - username:admin
+2021-02-22 09:27:01.670 INFO  --- [MyRealm.java:158][http-nio-8083-exec-6] - 存入redis的过期时间：-2
+2021-02-22 09:34:54.536 INFO  --- [StartupInfoLogger.java:55][main] - Starting AssociationManageApplication using Java 1.8.0_161 on YUMC80K8J8KKQ8K with PID 19732 (G:\IDEA\workspace\graduationProject\association-manage\target\classes started by Taylor in G:\IDEA\workspace\graduationProject\association-manage)
+2021-02-22 09:34:54.541 INFO  --- [SpringApplication.java:664][main] - The following profiles are active: dev
+2021-02-22 09:34:56.090 INFO  --- [HikariDataSource.java:110][main] - HikariPool-1 - Starting...
+2021-02-22 09:34:56.252 INFO  --- [HikariDataSource.java:123][main] - HikariPool-1 - Start completed.
+2021-02-22 09:34:59.129 INFO  --- [StartupInfoLogger.java:61][main] - Started AssociationManageApplication in 5.422 seconds (JVM running for 7.682)
+2021-02-22 09:35:03.023 INFO  --- [JwtFilter.java:40][http-nio-8083-exec-1] - 提交给realm进行登入，如果错误他会抛出异常并被捕获
+2021-02-22 09:35:03.024 INFO  --- [MyRealm.java:63][http-nio-8083-exec-1] - ————————身份认证——————————
+2021-02-22 09:35:03.060 INFO  --- [MyRealm.java:70][http-nio-8083-exec-1] - username:admin
+2021-02-22 09:35:04.788 INFO  --- [MyRealm.java:158][http-nio-8083-exec-1] - 存入redis的过期时间：-2
+2021-02-22 09:36:06.264 INFO  --- [StartupInfoLogger.java:55][main] - Starting AssociationManageApplication using Java 1.8.0_161 on YUMC80K8J8KKQ8K with PID 7652 (G:\IDEA\workspace\graduationProject\association-manage\target\classes started by Taylor in G:\IDEA\workspace\graduationProject\association-manage)
+2021-02-22 09:36:06.268 INFO  --- [SpringApplication.java:664][main] - The following profiles are active: dev
+2021-02-22 09:36:07.776 INFO  --- [HikariDataSource.java:110][main] - HikariPool-1 - Starting...
+2021-02-22 09:36:07.929 INFO  --- [HikariDataSource.java:123][main] - HikariPool-1 - Start completed.
+2021-02-22 09:36:10.553 INFO  --- [StartupInfoLogger.java:61][main] - Started AssociationManageApplication in 5.087 seconds (JVM running for 7.142)
+2021-02-22 09:37:20.127 INFO  --- [StartupInfoLogger.java:55][main] - Starting AssociationManageApplication using Java 1.8.0_161 on YUMC80K8J8KKQ8K with PID 15136 (G:\IDEA\workspace\graduationProject\association-manage\target\classes started by Taylor in G:\IDEA\workspace\graduationProject\association-manage)
+2021-02-22 09:37:20.131 INFO  --- [SpringApplication.java:664][main] - The following profiles are active: dev
+2021-02-22 09:37:21.705 INFO  --- [HikariDataSource.java:110][main] - HikariPool-1 - Starting...
+2021-02-22 09:37:21.856 INFO  --- [HikariDataSource.java:123][main] - HikariPool-1 - Start completed.
+2021-02-22 09:37:24.289 INFO  --- [StartupInfoLogger.java:61][main] - Started AssociationManageApplication in 4.913 seconds (JVM running for 6.855)
+2021-02-22 09:37:54.512 INFO  --- [JwtFilter.java:40][http-nio-8083-exec-2] - 提交给realm进行登入，如果错误他会抛出异常并被捕获
+2021-02-22 09:37:54.512 INFO  --- [MyRealm.java:63][http-nio-8083-exec-2] - ————————身份认证——————————
+2021-02-22 09:37:54.548 INFO  --- [MyRealm.java:70][http-nio-8083-exec-2] - username:admin
+2021-02-22 09:37:56.229 INFO  --- [MyRealm.java:158][http-nio-8083-exec-2] - 存入redis的过期时间：-2
+2021-02-22 09:39:46.892 INFO  --- [StartupInfoLogger.java:55][main] - Starting AssociationManageApplication using Java 1.8.0_161 on YUMC80K8J8KKQ8K with PID 18356 (G:\IDEA\workspace\graduationProject\association-manage\target\classes started by Taylor in G:\IDEA\workspace\graduationProject\association-manage)
+2021-02-22 09:39:46.896 INFO  --- [SpringApplication.java:664][main] - The following profiles are active: dev
+2021-02-22 09:39:48.251 INFO  --- [HikariDataSource.java:110][main] - HikariPool-1 - Starting...
+2021-02-22 09:39:48.408 INFO  --- [HikariDataSource.java:123][main] - HikariPool-1 - Start completed.
+2021-02-22 09:39:50.943 INFO  --- [StartupInfoLogger.java:61][main] - Started AssociationManageApplication in 4.835 seconds (JVM running for 7.028)
+2021-02-22 09:40:32.724 INFO  --- [JwtFilter.java:40][http-nio-8083-exec-5] - 提交给realm进行登入，如果错误他会抛出异常并被捕获
+2021-02-22 09:40:32.725 INFO  --- [MyRealm.java:63][http-nio-8083-exec-5] - ————————身份认证——————————
+2021-02-22 09:40:32.749 INFO  --- [MyRealm.java:70][http-nio-8083-exec-5] - username:admin
+2021-02-22 09:40:32.763 INFO  --- [MyRealm.java:152][http-nio-8083-exec-5] - 重新设置超时时间:1800
+2021-02-22 09:40:32.770 INFO  --- [UserServiceImpl.java:68][http-nio-8083-exec-5] - ======token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhZG1pbiIsInVpZCI6MTM2MjcwODMxNjM1NDA0MzkwNSwiZXhwIjoxNjEzOTU5ODIzfQ.2UyiySR9rsOa2haIf4qmjLU6-OMKoQpGPc5b29Xt538
+2021-02-22 09:40:32.782 INFO  --- [UserServiceImpl.java:95][http-nio-8083-exec-5] - RoleId为：2
+2021-02-22 09:40:32.794 INFO  --- [UserServiceImpl.java:103][http-nio-8083-exec-5] - userInfoVO:UserInfoVO(userId=1362708316354043905, username=admin, name=Admin, sex=男, phone=18894566254, email=admin@qq.com, createTime=Fri Feb 19 18:19:15 CST 2021, updateTime=Fri Feb 19 18:19:15 CST 2021, roles=[admin])

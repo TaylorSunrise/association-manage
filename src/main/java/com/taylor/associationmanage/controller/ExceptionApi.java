@@ -36,13 +36,14 @@ public class ExceptionApi {
         return ResultUtil.error(401, "Unauthorized");
     }
 
-    /** 捕捉其他所有异常 */
-    @ExceptionHandler(Exception.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResultVO globalException(HttpServletRequest request, Throwable ex) {
-        log.info("其他所有异常:"+ex.getMessage());
-        return ResultUtil.error(getStatus(request).value(), ex.getMessage());
-    }
+//    /** 捕捉其他所有异常,开发阶段一定要注释此方法，不然会捕获一切异常，进行统一异常处理，导致问题无法排查 */
+
+//    @ExceptionHandler(Exception.class)
+//    @ResponseStatus(HttpStatus.BAD_REQUEST)
+//    public ResultVO globalException(HttpServletRequest request, Throwable ex) {
+//        log.info("其他所有异常:"+ex.getMessage());
+//        return ResultUtil.error(getStatus(request).value(), ex.getMessage());
+//    }
 
     private HttpStatus getStatus(HttpServletRequest request) {
         Integer statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");

@@ -33,7 +33,9 @@ public enum ResultEnum {
     PICTURE_HAS_USED(24, "该图片已被使用, 请更换图片或重新上传图片"),
     ACCOUNT_IS_KICKED(25, "您的账号在其他设备登录, 如非本人操作请更改密码"),
     USER_HAS_LOGIN(26, "用户已经登录, 请勿重复登录"),
-    USER_NOT_LOGIN(27, "用户未登录, 请先登录");
+    USER_NOT_LOGIN(27, "用户未登录, 请先登录"),
+    TOKEN_INVALID(28, "Token失效请重新登录!");
+
 
     private Integer code;
 

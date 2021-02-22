@@ -103,7 +103,7 @@ public class MyRealm extends AuthorizingRealm {
                 roleSet.add("root");
             }else if (user.getRoleId()==2){//社团管理员
                 QueryWrapper<Role> queryWrapper = new QueryWrapper<>();
-                queryWrapper.eq("user_id",1362708702544654337L).select("DISTINCT role");
+                queryWrapper.eq("user_id",user.getUserId()).select("DISTINCT role");
                 List<Role> roles = roleMapper.selectList(queryWrapper);
                 for (Role r:roles) {
                     //admin:admin社长
@@ -143,17 +143,19 @@ public class MyRealm extends AuthorizingRealm {
         if (cacheToken != null && cacheToken.length() != 0 && !"null".equals(cacheToken)) {
             // 校验token有效性
             if (!JwtUtil.isVerify(cacheToken)) {
+                log.info("token无效，生成token存入redis,并设置超时时间:"+JwtUtil.getExpireTime());
                 // 生成token
                 String newToken = JwtUtil.createToken(user);
                 // 将token存入redis,并设置超时时间
                 redisUtil.set(token, newToken, JwtUtil.getExpireTime());
             } else {
+                log.info("重新设置超时时间:"+JwtUtil.getExpireTime());
                 // 重新设置超时时间
                 redisUtil.expire(token, JwtUtil.getExpireTime());
             }
-            log.info("存入redis的过期时间："+redisUtil.getExpire(token));
             return true;
         }
+        log.info("存入redis的过期时间："+redisUtil.getExpire(token));
         return false;
     }
 }

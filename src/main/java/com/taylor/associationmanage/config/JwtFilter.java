@@ -37,6 +37,7 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         String authorization = httpServletRequest.getHeader("X-Token");
         JwtToken token = new JwtToken(authorization);
+        log.info("提交给realm进行登入，如果错误他会抛出异常并被捕获");
         // 提交给realm进行登入，如果错误他会抛出异常并被捕获
         getSubject(request, response).login(token);
         return true;
@@ -47,7 +48,7 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
     private void unauthorized(ServletResponse resp) {
         try {
             HttpServletResponse httpServletResponse = (HttpServletResponse) resp;
-            httpServletResponse.sendRedirect("/unauthorized");
+            httpServletResponse.sendRedirect("/user/unauthorized");
         } catch (IOException e) {
             log.error(e.getMessage());
         }
